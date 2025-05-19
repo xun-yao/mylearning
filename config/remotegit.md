@@ -9,39 +9,55 @@
 
 ## 2. git配置
 1. 设置用户名：  
-> git config --global user.name "用户名"
+    > git config --global user.name "用户名"
     
 2. 设置邮箱： 
-> git config --global user.email "邮箱"
+    > git config --global user.email "邮箱"
     
 3. 初始化:
-> git init
+    > git init
 
 ## 3. git的基本命令
 1. 获取当前状态
-> git status
+    > git status
 
 提示：会给出当前所在分支、未提交至本地仓库、当前工作区的文件等信息。
 
 2. 添加到缓存区
-> git add 文件
+    - 将单个文件暂存
+    > git add 文件
+    - 所有更改过的文件暂存
+    > git add -u/.
 
-3. 添加到本地仓库
-> git commit [-m "更新信息"]
+3. 删除
+- 删除本地文件
+    > [git] rm [-r] 文件名
 
-注：git提交时，期望有提交信息，若无-m，则会打开编辑器，也要输入提交信息。
+注：添加git后，git会检测到更改。
+  
+- 删除远程文件
+  ```
+   git rm --cached [-r] 文件名
+  ```
+提示：cache表示删除git的跟踪记录，不影响本地文件
 
-4. 查看commit提交版本(看谁提交)
-> git log
+4. 提交更改
+    > git commit [文件] [-m "更新信息"]
 
-5. 创建 .ignore 文件
-> touch .ignore 
-> mv 可忽略文件 .ignore
+注：git提交时，期望有提交信息，若无-m，则会打开编辑器，也要输入提交信息。当仅git commit时，会提交所有更改
+
+
+5. 查看commit提交版本
+    > git log
+
+6. 创建 .ignore 文件和使用.ignore
+    > touch .ignore 
+    > mv 可忽略文件 .ignore
 
 注：可将工作区可忽略的文件不提交至本地、远程仓库。
 
-6. 查看本地仓库与远程仓库联系
-> git remote -v
+7. 查看本地仓库与远程仓库联系
+    > git remote -v
 
 注:其中 远程仓库名字默认为Oringin，可用远程仓库来代替URL
 
@@ -50,18 +66,18 @@
 ### 分支的基本概念：当修改仓库文件时，不确定修改的正确性，可以创建一个当前仓库的分支(包含当前仓库所有文件)，可在分支中修改、提交，在两个分支合并前，其都是相互独立的。
 
 1. 创建分支
-> git branch 分支名
+    > git branch 分支名
 
 2. 切换分支
-> git checkout [-b] 分支名
+    > git checkout [-b] 分支名
 
 注：-b 表示创建并切换至新分支。
 
 3. 删除分支
-> git branch -d\D 分支名
+    > git branch -d\D 分支名
 
 注：-d为合并后才能删除，-D为强制删除
 
 4. 将分支合并到当前分支
-> git merge 分支名
+    > git merge 分支名
 
