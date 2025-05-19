@@ -1,8 +1,0 @@
-  1 1.vscode中配置c++环境
-  2 （1）下载msys2，配置环境需要下载msys2中的bin（存放解释器）和include（头文件）文件夹，第一次安装msys2只是下载了个终端，
-  3 需要在msys2终端中输入pacman -S mingw-w64-ucrt-x86_64-toolchain来下载对应的工具链，在这里即可去ucrt64文件夹中找到bin和include文件夹，其中是有如gcc.exe，以及头文件等文件。
-  4 （2）进入vscode ctrl+shift+p 搜索edit configuration（json）打开后在includepath中加入include的文件路径（如："E:/environment/msys64/ucrt64/include/**"，注：这里的**表示include文件下所有的文件），以及定义解释器的路径（如："compilerPath": "E:/environment/msys64/ucrt64/bin/gcc.exe"）
-  5 （3）进入windows中的编辑系统环境变量，需要在当前用户的path路径下加入解释器所在的路径，即bin的路径。
-  6 
-  7 小插曲:在配置过程中一直遇到Fatal error: can't create C:\Users\��Ѻ�\AppData\Local\Temp\ccsC0B6M.o: No such file or directory，原因可能是路径包含了中文名，由于解释器需要将源代码编译为可执行.o文件，这种文件一般生成在系统、用户变量中的TEMP、TMP文件夹下，这两个文件夹默认在c盘下，用于存储系统的临时文件，此时需要修改临时目录的路径。将TEMP、TMP两个的变量
-  8 值修改为新的目录，保存即可。在cmd命令行中输入 echo %TEMP% , echo %TMP% 即可查看当前的路径，检查是否更改。修改后系统临时文件存放在新的路径下，也可节省C盘空间。
