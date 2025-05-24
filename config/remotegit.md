@@ -68,16 +68,41 @@
 1. 创建分支
     > git branch 分支名
 
-2. 切换分支
+- 切换分支
     > git checkout [-b] 分支名
 
 注：-b 表示创建并切换至新分支。
 
+- 设置上游： 本地分支跟踪远程仓库，git pull，git push，git fetch无需指定分支
+    > git push -u origin <new-branch>
+
+注：pull、fetch区别为fetch仅下载，pull下载且自动合并。
+
 3. 删除分支
+-   本地删除
     > git branch -d\D 分支名
 
-注：-d为合并后才能删除，-D为强制删除
+注：-d为合并后才能删除，-D为强制删除，且不允许删除当前分支。
+
+-   远程删除
+    > git push <remote-name> --delete <branch-name>
+
+注：remote-name默认为origin
+
+-   删除恢复
+    > git reflog
+    > git branch <branch-name> <commit-hash>
 
 4. 将分支合并到当前分支
     > git merge 分支名
+
+5. 拉取分支
+- 本地已有
+  > git fetch origin
+  > git switch <branch-name>
+- 本地没有
+  > git fetch origin
+  > git switch -c <branch-name> <remote-branch>
+
+注：switch -c 表示创建并切换分支。
 
